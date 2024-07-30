@@ -10,17 +10,19 @@ namespace Enemies
         [SerializeField] private Transform _rayOrigin;
         [SerializeField] private float _MaxHealth;
         [SerializeField] private float _force = 2f;
+        Animator _animator;
         EnemySO _enemySO;
         EnemyHealth _health;
         float _currentHealth;
         Rigidbody _rb;
         EnemyMovement _movement;
 
+        int _deadTriggerCode;
+
         [Inject]
-        public void Construct(EnemyHealth enemyHealth,
+        public void Construct(
             EnemySO enemySO)
         {
-            _health = enemyHealth;
             _enemySO = enemySO;
         }
         private void Start()
@@ -29,11 +31,15 @@ namespace Enemies
             _movement = new EnemyMovement(_rb, transform, _enemySO);
             _currentHealth = _MaxHealth;
             _force = _enemySO.Force;
+            _health = new EnemyHealth(_enemySO);
+            _animator = GetComponent<Animator>();
+            _deadTriggerCode = Animator.StringToHash("DeadTrigger");
         }
 
         public void Update()
         {
-            if (IsChangeDirection())
+            if (IsChangeDirection() && 
+                !_health.IsDead)
             {
                 ChangeDirection();
             }
@@ -41,7 +47,10 @@ namespace Enemies
 
         private void FixedUpdate()
         {
-            _movement.FixedUpdate(Time.fixedDeltaTime);
+            if(!_health.IsDead)
+            {
+                _movement.FixedUpdate(Time.fixedDeltaTime);
+            }
 
         }
         private void OnCollisionEnter(Collision collision)
@@ -83,8 +92,14 @@ namespace Enemies
             _health.Helth -= damage;
             if(_health.IsDead)
             {
-                Destroy(gameObject);
+
+                _animator.SetTrigger(_deadTriggerCode);
             }
+        }
+
+        public void OnDeathEnd()
+        {
+            Destroy(gameObject);
         }
     }
 }

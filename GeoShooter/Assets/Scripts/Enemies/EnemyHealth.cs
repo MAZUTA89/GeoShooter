@@ -31,8 +31,8 @@ namespace Enemies
 
         public EnemyHealth(EnemySO enemySO)
         {
+            _maxHealth = enemySO.Health;
             Helth = enemySO.Health;
-            _maxHealth = Helth;
         }
     }
 }

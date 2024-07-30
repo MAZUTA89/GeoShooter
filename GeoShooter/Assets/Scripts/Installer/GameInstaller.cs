@@ -59,8 +59,6 @@ namespace Installer
         }
         void BindEnemy()
         {
-            EnemyHealth enemyHealth = new EnemyHealth(_enemySO);
-            Container.BindInstance(enemyHealth);
             Container.Bind<Enemy>().AsTransient();
             Container.BindInstance(_enemySO);
         }
