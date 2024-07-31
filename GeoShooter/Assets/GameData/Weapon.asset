@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Weapon
   m_EditorClassIdentifier: 
   Speed: 8.27
-  Damage: 5
+  Damage: 15

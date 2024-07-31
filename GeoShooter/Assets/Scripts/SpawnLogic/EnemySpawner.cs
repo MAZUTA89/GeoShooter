@@ -11,6 +11,19 @@ namespace SpawnLogic
         SpawnSO _spawnSO;
         float _currentTime;
         float _currentSpawnDelay;
+        float SpawnDelay
+        {
+            get
+            {
+                return _currentSpawnDelay;
+            }
+            set
+            {
+                _currentSpawnDelay = value;
+                if(_currentSpawnDelay < _spawnSO.SpawnMinDelay)
+                    _currentSpawnDelay = _spawnSO.SpawnMinDelay;
+            }
+        }
         EnemyFactory _enemyFactory;
         [Inject] 
         public void Construct(List<Transform> spawnPoints,
@@ -24,14 +37,14 @@ namespace SpawnLogic
         private void Start()
         {
             _currentTime = 0f;
-            _currentSpawnDelay = _spawnSO.SpawnDelay;
+            SpawnDelay = _spawnSO.SpawnDelay;
         }
 
         public void Update()
         {
             _currentTime += Time.deltaTime;
             
-            if(_currentTime >= _currentSpawnDelay)
+            if(_currentTime >= SpawnDelay)
             {
                 _currentTime = 0;
 
@@ -39,7 +52,7 @@ namespace SpawnLogic
 
                 _enemyFactory.Create(point);
 
-                _currentSpawnDelay -= _spawnSO.SpawnDelayMultiplier;
+                SpawnDelay -= _spawnSO.SpawnDelayMultiplier;
             }
         }
 
