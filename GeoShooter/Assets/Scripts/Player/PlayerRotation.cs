@@ -18,7 +18,7 @@ namespace PlayerCode
             Vector3 mousePos = _player.MouseWorldPosition;
 
             Vector3 direction = mousePos - _player.transform.position;
-
+            direction = new Vector3(direction.x, 0, direction.z);
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
             _player.transform.rotation = Quaternion.RotateTowards(_player.transform.rotation,

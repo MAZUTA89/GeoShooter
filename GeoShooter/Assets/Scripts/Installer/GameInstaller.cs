@@ -26,6 +26,9 @@ namespace Installer
             BindSpawner();
             BindEnemy();
             BindWeapon();
+            Container.Bind<ShootingRig>()
+                .FromComponentInHierarchy()
+                .AsSingle();
         }
 
         void BindInputService()

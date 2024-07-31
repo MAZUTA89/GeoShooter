@@ -13,6 +13,7 @@ namespace PlayerCode
         PlayerMovement _playerMovement;
         PlayerRotation _playerRotation;
         CharacterController _characterController;
+        Animator _animator;
         Camera _camera;
         Vector3 _mousePosition;
         public Vector3 MouseWorldPosition => _mousePosition;
@@ -26,8 +27,9 @@ namespace PlayerCode
         {
             _camera = Camera.main;
             _characterController = GetComponent<CharacterController>();
+            _animator = GetComponent<Animator>();
             _playerMovement = new PlayerMovement(_characterController,
-                _camera.transform, _inputService);
+                _camera.transform, _inputService, _animator);
 
             _playerRotation = new PlayerRotation(this);
         }

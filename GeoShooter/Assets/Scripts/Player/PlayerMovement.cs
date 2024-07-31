@@ -12,18 +12,28 @@ namespace PlayerCode
         CharacterController _controller;
         Transform _cameraTransform;
         InputService _inputService;
+        Animator _animator;
+        int _horizontalCode;
+        int _verticalCode;
         public PlayerMovement(CharacterController characterController,
             Transform cameraTransform,
-            InputService inputService)
+            InputService inputService,
+            Animator animator)
         {
             _controller = characterController;
             _cameraTransform = cameraTransform;
             _inputService = inputService;
+            _animator = animator;
+            _horizontalCode = Animator.StringToHash("Horizontal");
+            _verticalCode = Animator.StringToHash("Vertical");
         }
 
         public void Update(float ticks)
         {
             Vector2 input = _inputService.GetMovement();
+
+            _animator.SetFloat(_horizontalCode, input.x);
+            _animator.SetFloat(_verticalCode, input.y);
 
             Vector3 movement = _cameraTransform.right * input.x +
                 _cameraTransform.up * input.y;

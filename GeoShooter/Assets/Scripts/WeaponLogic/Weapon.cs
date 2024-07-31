@@ -64,16 +64,9 @@ namespace WeaponLogic
             {
                 var obj = hit.collider.gameObject;
                 var direction = hit.point - _player.transform.position;
-                try
-                {
-                    Instantiate(_hitParticle, hit.point,
-                    Quaternion.LookRotation(direction), null);
-                }
-                catch(MissingReferenceException ex)
-                {
 
-                }
-                
+                Instantiate(_hitParticle, hit.point,
+                Quaternion.LookRotation(direction), null);
 
                 Debug.Log($"{obj.name}");
                 if (obj.TryGetComponent(out Enemy enemy))
