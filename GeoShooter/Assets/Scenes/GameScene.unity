@@ -1736,7 +1736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000017893306, y: 0.8168534, z: -0.57684535, w: -0.000000025338172}
+  m_LocalRotation: {x: 0.000000017893306, y: 0.8168534, z: -0.57684535, w: 0.000000025338172}
   m_LocalPosition: {x: 0, y: 10.752, z: 1.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2028,7 +2028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159655625}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000017893306, y: 0.8168534, z: -0.57684535, w: -0.000000025338172}
+  m_LocalRotation: {x: 0.000000017893306, y: 0.8168534, z: -0.57684535, w: 0.000000025338172}
   m_LocalPosition: {x: 0, y: 10.752, z: 1.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2339,6 +2339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1396327991}
+  - component: {fileID: 1396327992}
   m_Layer: 0
   m_Name: main_branch_changes
   m_TagString: Untagged
@@ -2363,6 +2364,14 @@ Transform:
   - {fileID: 1348991182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1396327992
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396327990}
+  m_Enabled: 1
 --- !u!4 &1407386925 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 09237e2f7618cde439d8c157c18ba73c, type: 3}
